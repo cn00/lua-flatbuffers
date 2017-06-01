@@ -3,7 +3,7 @@
 	url = git@github.com:SteveKChiu/lua-intf.git
 [submodule "flatbuffers"]
 	path = third_party/flatbuffers
-	url = git@github.com:google/flatbuffers.git
+	url = git@github.com:cn00/flatbuffers.git
 [submodule "third_party/lua"]
 	path = third_party/lua
-	url = git@github.com:LuaDist/lua.git
+	url = git@github.com:cn00/lua.git
