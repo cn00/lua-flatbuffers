@@ -25,5 +25,6 @@ std::string NameStack::PopFullName()
 
 void NameStack::Reset()
 {
-	m_stack.swap(Stack());  // swap to clear
+	auto stack = Stack();
+	m_stack.swap(stack);  // swap to clear
 }
