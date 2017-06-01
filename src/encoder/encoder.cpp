@@ -65,7 +65,7 @@ LuaIntf::LuaRef Encoder::TestToNum(const LuaRef& luaVal)
 	lua_State* L = luaVal.state();
 
 #ifdef NDEBUG
-	return LufRef(L, nullptr);
+	return LuaRef(L, nullptr);
 #else
 	char buf[1];
 	auto* pSchema = reinterpret_cast<reflection::Schema*>(buf);
