@@ -5,7 +5,7 @@ Usage:
 	linux:  premake5.exe --os=linux gmake
 ]]
 
-local lua_include_dir = "../third_party/lua532/include"
+local lua_include_dir = "../third_party/lua/include"
 local lib_dir = "../third_party/lib"
 
 defines { "LUAINTF_LINK_LUA_COMPILED_IN_CXX=0" }
@@ -14,7 +14,7 @@ defines { "LUAINTF_HEADERS_ONLY=0"}
 workspace "lfb"
 	configurations { "Debug", "Release" }
 
-project "liblua523"
+project "liblua"
 	kind "StaticLib"
 	targetdir "../bin/%{cfg.buildcfg}"
 	targetprefix ""  -- linux: lfb.so
@@ -28,13 +28,13 @@ project "liblua523"
 	-- defines { "LUAINTF_LINK_LUA_COMPILED_IN_CXX=0" }
 
 	files {
-		"../third_party/lua532/src/**.c",
-		"../third_party/lua532/src/**.h",
-		"../third_party/lua532/include/**.h",
+		"../third_party/lua/src/**.c",
+		"../third_party/lua/src/**.h",
+		"../third_party/lua/include/**.h",
 	}
 	includedirs {
-		"../third_party/lua532/src",
-		"../third_party/lua532/include",
+		"../third_party/lua/src",
+		"../third_party/lua/include",
 		lua_include_dir,
 	}
 	libdirs {
@@ -75,11 +75,12 @@ project "libfblua"
 		"../src/**.h",
 		"../src/**.cpp",
 		"../third_party/lua-intf/**.cpp",
-		-- "../third_party/lua532/src/*.c",
+		-- "../third_party/lua/src/*.c",
 	}
 	includedirs {
 		"../src",
 		"../third_party/lua-intf",
+		"../third_party/lua/src",
 		"../third_party/flatbuffers/grpc",
 		"../third_party/flatbuffers/include",
 		lua_include_dir,
@@ -101,7 +102,7 @@ project "libfblua"
 	filter {}
 
 	links {
-		"liblua523",
+		"liblua",
 		"libflatbuffers",
 	}
 
@@ -163,11 +164,11 @@ project "luac"
 	-- defines { "LUAINTF_LINK_LUA_COMPILED_IN_CXX=0" }
 
 	files {
-		"../third_party/lua532/src/wmain.cc",
+		"../third_party/lua/src/wmain.cc",
 	}
 	includedirs {
-		"../third_party/lua532/src",
-		"../third_party/lua532/include",
+		"../third_party/lua/src",
+		"../third_party/lua/include",
 		lua_include_dir,
 	}
 	libdirs {
@@ -187,7 +188,7 @@ project "luac"
 	filter {}
 
 	links {
-		"liblua523",
+		"liblua",
 		-- "libflatbuffers"
 	}
 

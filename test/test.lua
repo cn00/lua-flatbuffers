@@ -1,6 +1,6 @@
 package.cpath = package.cpath .. ";../bin/Debug/?.dll"
 
-lfb = require("lfb")
+lfb = require("libfblua")
 inspect = require("inspect")
 
 assert(lfb.load_bfbs_file("../third_party/flatbuffers/tests/monster_test.bfbs"))
@@ -371,28 +371,49 @@ end  -- test_decode_verify()
 
 function test_all()
 	test_monster()
+	print("test_monster passed.")
 
 	test_no_type()
+	print("test_no_type passed.")
 	test_required()
+	print("test_required passed.")
+	
 	test_too_short()
+	print("test_too_short passed.")
 	test_not_table()
+	print("test_not_table passed.")
 	test_type_convert()
+	print("test_type_convert passed.")
 	test_string_field()
+	print("test_string_field passed.")
 	test_encode_struct()
+	print("test_encode_struct passed.")
 	test_encode_nested_struct()
+	print("test_encode_nested_struct passed.")
 	test_to_num()
+	print("test_to_num passed.")
 	test_enum()
+	print("test_enum passed.")
 	test_encode_illegal_field()
+	print("test_encode_illegal_field passed.")
 	-- Todo: test_mygame_example2_monster()
 	test_encode_depricated_field()
+	print("test_encode_depricated_field passed.")
 	test_bool_field()
+	print("test_bool_field passed.")
 	test_vector_field()
+	print("test_vector_field passed.")
 	test_table_field()
+	print("test_table_field passed.")
 	test_union_field()
+	print("test_union_field passed.")
 	test_struct_field()
+	print("test_struct_field passed.")
 
 	-- test_decode_verify() is slow. Run manually.
 	print("All test passed.")
 end  -- test_all()
 
 test_all()
+
+return 0
