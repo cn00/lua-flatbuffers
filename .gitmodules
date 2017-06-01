@@ -4,3 +4,6 @@
 [submodule "flatbuffers"]
 	path = third_party/flatbuffers
 	url = git@github.com:google/flatbuffers.git
+[submodule "third_party/lua"]
+	path = third_party/lua
+	url = git@github.com:LuaDist/lua.git
