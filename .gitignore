@@ -35,3 +35,4 @@
 /build/*.opendb
 /build/*.sdf
 /build/lfb.VC.db
+build/
