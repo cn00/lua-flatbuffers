@@ -8,11 +8,14 @@ Usage:
 local lua_include_dir = "../third_party/lua/include"
 local lib_dir = "../third_party/lib"
 
+--[[
+	From: https://github.com/SteveKChiu/lua-intf
+	By default LuaIntf expect the Lua library to build under C++.
+	If you really want to use Lua library compiled under C,
+	you can define LUAINTF_LINK_LUA_COMPILED_IN_CXX to 0:
+--]]
 defines { "LUAINTF_LINK_LUA_COMPILED_IN_CXX=0" }
-defines { "LUAINTF_HEADERS_ONLY=0"}
-
--- if use cygwin make open this
--- defines { "LUA_USE_DLOPEN"}
+-- defines { "LUAINTF_HEADERS_ONLY=0"}
 
 workspace "lfb"
 	configurations { "Debug", "Release" }
@@ -22,13 +25,6 @@ project "libfblua"
 	targetdir "bin/%{cfg.buildcfg}"
 	targetprefix ""
 
-	--[[
-	From: https://github.com/SteveKChiu/lua-intf
-	By default LuaIntf expect the Lua library to build under C++.
-	If you really want to use Lua library compiled under C,
-	you can define LUAINTF_LINK_LUA_COMPILED_IN_CXX to 0:
-	--]]
-	-- defines { "LUAINTF_LINK_LUA_COMPILED_IN_CXX=0" }
 
 	files {
 		"../src/**.h",
@@ -174,7 +170,7 @@ project "libluaintf"
 	targetprefix ""
 
 	files {
-		"../third_party/lua-intf/**.cpp",
+		-- "../third_party/lua-intf/**.cpp", -- if defines { "LUAINTF_HEADERS_ONLY=0"}
 		"../third_party/lua-intf/**.h",
 	}
 	includedirs {
