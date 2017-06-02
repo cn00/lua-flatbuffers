@@ -10,7 +10,9 @@ local lib_dir = "../third_party/lib"
 
 defines { "LUAINTF_LINK_LUA_COMPILED_IN_CXX=0" }
 defines { "LUAINTF_HEADERS_ONLY=0"}
-defines { "LUA_USE_DLOPEN"}
+
+-- if use cygwin make open this
+-- defines { "LUA_USE_DLOPEN"}
 
 workspace "lfb"
 	configurations { "Debug", "Release" }
@@ -48,7 +50,7 @@ project "libfblua"
 	}
 
 	filter "configurations:Debug"
-		flags { "Symbols" }
+		symbols "On"
 		libdirs { lib_dir .. "/Debug" }
 	filter "configurations:Release"
 		defines { "NDEBUG" }
@@ -83,7 +85,7 @@ project "luac"
 	}
 
 	filter "configurations:Debug"
-		flags { "Symbols" }
+		symbols "On"
 		libdirs { lib_dir .. "/Debug" }
 	filter "configurations:Release"
 		defines { "NDEBUG" }
@@ -118,7 +120,7 @@ project "flatc"
 	}
 
 	filter "configurations:Debug"
-		flags { "Symbols" }
+		symbols "On"
 		libdirs { lib_dir .. "/Debug" }
 	filter "configurations:Release"
 		defines { "NDEBUG" }
@@ -155,7 +157,7 @@ project "liblua"
 	}
 
 	filter "configurations:Debug"
-		flags { "Symbols" }
+		symbols "On"
 		libdirs { lib_dir .. "/Debug" }
 	filter "configurations:Release"
 		defines { "NDEBUG" }
@@ -188,7 +190,7 @@ project "libluaintf"
 	}
 
 	filter "configurations:Debug"
-		flags { "Symbols" }
+		symbols "On"
 		libdirs { lib_dir .. "/Debug" }
 	filter "configurations:Release"
 		defines { "NDEBUG" }
@@ -223,7 +225,7 @@ project "libflatbuffers"
 	}
 
 	filter "configurations:Debug"
-		flags { "Symbols" }
+		symbols "On"
 		libdirs { lib_dir .. "/Debug" }
 	filter "configurations:Release"
 		defines { "NDEBUG" }
