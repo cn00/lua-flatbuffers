@@ -56,7 +56,7 @@ project "libfblua"
 
 	links {
 		"liblua",
-		"libluaintf",
+		-- "libluaintf", -- if defines { "LUAINTF_HEADERS_ONLY=0"}
 		"libflatbuffers",
 	}
 
