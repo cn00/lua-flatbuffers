@@ -10,14 +10,15 @@ local lib_dir = "../third_party/lib"
 
 defines { "LUAINTF_LINK_LUA_COMPILED_IN_CXX=0" }
 defines { "LUAINTF_HEADERS_ONLY=0"}
+defines { "LUA_USE_DLOPEN"}
 
 workspace "lfb"
 	configurations { "Debug", "Release" }
 
 project "libfblua"
 	kind "SharedLib"
-	targetdir "../bin/%{cfg.buildcfg}"
-	targetprefix ""  -- linux: lfb.so
+	targetdir "bin/%{cfg.buildcfg}"
+	targetprefix ""
 
 	--[[
 	From: https://github.com/SteveKChiu/lua-intf
@@ -30,7 +31,6 @@ project "libfblua"
 	files {
 		"../src/**.h",
 		"../src/**.cpp",
-		-- "../third_party/lua/src/*.c",
 	}
 	includedirs {
 		"../src",
@@ -64,16 +64,8 @@ project "libfblua"
 
 project "luac"
 	kind "ConsoleApp"
-	targetdir "../bin/%{cfg.buildcfg}"
+	targetdir "bin/%{cfg.buildcfg}"
 	targetprefix ""
-
-	--[[
-	From: https://github.com/SteveKChiu/lua-intf
-	By default LuaIntf expect the Lua library to build under C++.
-	If you really want to use Lua library compiled under C,
-	you can define LUAINTF_LINK_LUA_COMPILED_IN_CXX to 0:
-	--]]
-	-- defines { "LUAINTF_LINK_LUA_COMPILED_IN_CXX=0" }
 
 	files {
 		"../third_party/lua/src/wmain.cc",
@@ -101,21 +93,12 @@ project "luac"
 
 	links {
 		"liblua",
-		-- "libflatbuffers"
 	}
 
 project "flatc"
 	kind "ConsoleApp"
-	targetdir "../bin/%{cfg.buildcfg}"
+	targetdir "bin/%{cfg.buildcfg}"
 	targetprefix ""
-
-	--[[
-	From: https://github.com/SteveKChiu/lua-intf
-	By default LuaIntf expect the Lua library to build under C++.
-	If you really want to use Lua library compiled under C,
-	you can define LUAINTF_LINK_LUA_COMPILED_IN_CXX to 0:
-	--]]
-	-- defines { "LUAINTF_LINK_LUA_COMPILED_IN_CXX=0" }
 
 	files {
 		"../third_party/flatbuffers/src/flatc.cxx",
@@ -151,16 +134,8 @@ group "libs"
 
 project "liblua"
 	kind "StaticLib"
-	targetdir "../bin/%{cfg.buildcfg}"
-	targetprefix ""  -- linux: lfb.so
-
-	--[[
-	From: https://github.com/SteveKChiu/lua-intf
-	By default LuaIntf expect the Lua library to build under C++.
-	If you really want to use Lua library compiled under C,
-	you can define LUAINTF_LINK_LUA_COMPILED_IN_CXX to 0:
-	--]]
-	-- defines { "LUAINTF_LINK_LUA_COMPILED_IN_CXX=0" }
+	targetdir "bin/%{cfg.buildcfg}"
+	targetprefix ""
 
 	files {
 		"../third_party/lua/src/**.c",
@@ -193,16 +168,8 @@ project "liblua"
 
 project "libluaintf"
 	kind "StaticLib"
-	targetdir "../bin/%{cfg.buildcfg}"
-	targetprefix ""  -- linux: lfb.so
-
-	--[[
-	From: https://github.com/SteveKChiu/lua-intf
-	By default LuaIntf expect the Lua library to build under C++.
-	If you really want to use Lua library compiled under C,
-	you can define LUAINTF_LINK_LUA_COMPILED_IN_CXX to 0:
-	--]]
-	-- defines { "LUAINTF_LINK_LUA_COMPILED_IN_CXX=0" }
+	targetdir "bin/%{cfg.buildcfg}"
+	targetprefix ""
 
 	files {
 		"../third_party/lua-intf/**.cpp",
@@ -230,22 +197,12 @@ project "libluaintf"
 	filter {}
 
 	links {
-		-- "liblua.dll",
-		-- "flatbuffers"
 	}
 
 project "libflatbuffers"
 	kind "StaticLib"
-	targetdir "../bin/%{cfg.buildcfg}"
+	targetdir "bin/%{cfg.buildcfg}"
 	targetprefix ""
-
-	--[[
-	From: https://github.com/SteveKChiu/lua-intf
-	By default LuaIntf expect the Lua library to build under C++.
-	If you really want to use Lua library compiled under C,
-	you can define LUAINTF_LINK_LUA_COMPILED_IN_CXX to 0:
-	--]]
-	-- defines { "LUAINTF_LINK_LUA_COMPILED_IN_CXX=0" }
 
 	files {
 		"../third_party/flatbuffers/src/**.cpp",
@@ -275,6 +232,5 @@ project "libflatbuffers"
 	filter {}
 
 	links {
-		-- "flatbuffers"
 	}
 
